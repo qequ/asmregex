@@ -79,6 +79,11 @@ class BinaryLoader ( object ):
     
 
   def load_binary(self, include_obj = None):
+    sections_map = {}
+    for key, value in self.angrproj.loader.all_objects[0].sections_map.items():
+          sections_map[key.strip("\x00")] = value
+    self.angrproj.loader.all_objects[0].sections_map = sections_map
+
     if include_obj is None:
       binary = self.angrproj.loader.all_objects[0].sections_map['.text']  # TODO: Make sure this is the binary itself, this is hacky
     else:
