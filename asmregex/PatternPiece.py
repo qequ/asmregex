@@ -413,7 +413,7 @@ class AsmPP ( PatternPiece ):
     """ Reads and parses the opcode placeholder """
     if instrstr[0] == "I":
       self.invert_opcode = True
-      del instrstr[0]
+      instrstr = instrstr[1:]
     self.opcode = instrstr.split('.')  # just basic, for testing purposes
     for op in self.opcode:
       if op == 'any':
